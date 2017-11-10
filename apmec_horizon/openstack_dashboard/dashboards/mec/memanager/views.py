@@ -44,7 +44,7 @@ class IndexView(tabs.TabbedTableView):
         return context
 
 
-class DeployVMECiew(forms.ModalFormView):
+class DeployMEAView(forms.ModalFormView):
     form_class = project_forms.DeployMEA
     template_name = 'mec/memanager/deploy_mea.html'
     success_url = reverse_lazy("horizon:mec:memanager:index")
@@ -67,7 +67,7 @@ class DeployVMECiew(forms.ModalFormView):
         return {}
 
     def get_context_data(self, **kwargs):
-        context = super(DeployVMECiew, self).get_context_data(**kwargs)
+        context = super(DeployMEAView, self).get_context_data(**kwargs)
         # instance_id = self.kwargs['instance_id']
         # context['instance_id'] = instance_id
         # context['instance'] = self.get_object()

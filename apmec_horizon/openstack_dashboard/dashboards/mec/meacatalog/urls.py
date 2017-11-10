@@ -19,6 +19,6 @@ from apmec_horizon.openstack_dashboard.dashboards.mec.meacatalog import views
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^onboardmea', views.OnBoardVMECiew.as_view(), name='onboardmea'),
+    url(r'^onboardmea', views.OnBoardMEAView.as_view(), name='onboardmea'),
     url(r'^(?P<mead_id>[^/]+)/$', views.DetailView.as_view(), name='detail'),
 ]

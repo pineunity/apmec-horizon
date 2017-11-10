@@ -43,7 +43,7 @@ class IndexView(tabs.TabbedTableView):
         return context
 
 
-class OnBoardVMECiew(forms.ModalFormView):
+class OnBoardMEAView(forms.ModalFormView):
     form_class = project_forms.OnBoardMEA
     template_name = 'mec/meacatalog/onboardmea.html'
     success_url = reverse_lazy("horizon:mec:meacatalog:index")
@@ -66,7 +66,7 @@ class OnBoardVMECiew(forms.ModalFormView):
         return {}
 
     def get_context_data(self, **kwargs):
-        context = super(OnBoardVMECiew, self).get_context_data(**kwargs)
+        context = super(OnBoardMEAView, self).get_context_data(**kwargs)
         # instance_id = self.kwargs['instance_id']
         # context['instance_id'] = instance_id
         # context['instance'] = self.get_object()
