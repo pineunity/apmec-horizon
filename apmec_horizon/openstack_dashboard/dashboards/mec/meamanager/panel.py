@@ -13,10 +13,15 @@
 # under the License.
 
 
-from openstack_dashboard.test import helpers as test
+from django.utils.translation import ugettext_lazy as _
+
+import horizon
+from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
 
 
-class MeamanagerTests(test.TestCase):
-    # Unit tests for memanager.
-    def test_me(self):
-        self.assertTrue(1 + 1 == 2)
+class Meamanager(horizon.Panel):
+    name = _("MEA Manager")
+    slug = "meamanager"
+
+
+dashboard.Mec.register(Meamanager)

@@ -18,7 +18,7 @@ from horizon import tabs
 
 from apmec_horizon.openstack_dashboard import api
 from apmec_horizon.openstack_dashboard.dashboards.mec import utils
-from apmec_horizon.openstack_dashboard.dashboards.mec.memanager import tables
+from apmec_horizon.openstack_dashboard.dashboards.mec.meamanager import tables
 
 
 class MEAManagerTab(tabs.TableTab):
@@ -81,7 +81,7 @@ class MEAManagerTabs(tabs.TabGroup):
 class VDUDetailTab(tabs.Tab):
     name = _("VDU Detail")
     slug = "VDU_Details"
-    template_name = "mec/memanager/vdu_details.html"
+    template_name = "mec/meamanager/vdu_details.html"
 
     def get_context_data(self, request):
         return {'mea': self.tab_group.kwargs['mea']}

@@ -21,7 +21,7 @@ import horizon
 class Meamgroup(horizon.PanelGroup):
     slug = "mecgroup"
     name = _("MEA Management")
-    panels = ('meacatalog', 'memanager',)
+    panels = ('meacatalog', 'meamanager',)
 
 
 class Mecogroup(horizon.PanelGroup):

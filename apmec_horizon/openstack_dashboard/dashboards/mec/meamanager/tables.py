@@ -165,7 +165,7 @@ class DeployMEA(tables.LinkAction):
     verbose_name = _("Deploy MEA")
     classes = ("ajax-modal",)
     icon = "plus"
-    url = "horizon:mec:memanager:deploymea"
+    url = "horizon:mec:meamanager:deploymea"
 
 
 class MEAManagerTable(tables.DataTable):
@@ -236,7 +236,7 @@ class MEAManagerTable(tables.DataTable):
                                        u"Check Failed")),
     )
     name = tables.Column("name",
-                         link="horizon:mec:memanager:detail",
+                         link="horizon:mec:meamanager:detail",
                          verbose_name=_("MEA Name"))
     description = tables.Column("description",
                                 verbose_name=_("Description"))
@@ -254,7 +254,7 @@ class MEAManagerTable(tables.DataTable):
                                  verbose_name=_("Error Reason"))
 
     class Meta(object):
-        name = "memanager"
+        name = "meamanager"
         verbose_name = _("MEAManager")
         status_columns = ["status", ]
         row_class = MEAUpdateRow

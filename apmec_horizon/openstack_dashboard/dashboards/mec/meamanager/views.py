@@ -25,10 +25,10 @@ from horizon import tabs
 from horizon.utils import memoized
 
 from apmec_horizon.openstack_dashboard import api as apmec_api
-from apmec_horizon.openstack_dashboard.dashboards.mec.memanager \
+from apmec_horizon.openstack_dashboard.dashboards.mec.meamanager \
     import forms as project_forms
 
-from apmec_horizon.openstack_dashboard.dashboards.mec.memanager \
+from apmec_horizon.openstack_dashboard.dashboards.mec.meamanager \
     import tabs as mec_tabs
 
 LOG = logging.getLogger(__name__)
@@ -37,7 +37,7 @@ LOG = logging.getLogger(__name__)
 class IndexView(tabs.TabbedTableView):
     # A very simple class-based view...
     tab_group_class = mec_tabs.MEAManagerTabs
-    template_name = 'mec/memanager/index.html'
+    template_name = 'mec/meamanager/index.html'
 
     def get_data(self, request, context, *args, **kwargs):
         # Add data to the context here...
@@ -46,12 +46,12 @@ class IndexView(tabs.TabbedTableView):
 
 class DeployMEAView(forms.ModalFormView):
     form_class = project_forms.DeployMEA
-    template_name = 'mec/memanager/deploy_mea.html'
-    success_url = reverse_lazy("horizon:mec:memanager:index")
+    template_name = 'mec/meamanager/deploy_mea.html'
+    success_url = reverse_lazy("horizon:mec:meamanager:index")
     modal_id = "deploy_mea_modal"
     modal_header = _("Deploy MEA")
     submit_label = _("Deploy MEA")
-    submit_url = "horizon:mec:memanager:deploymea"
+    submit_url = "horizon:mec:meamanager:deploymea"
 
     # @memoized.memoized_method
     # def get_object(self):
@@ -77,8 +77,8 @@ class DeployMEAView(forms.ModalFormView):
 
 class DetailView(tabs.TabView):
     tab_group_class = mec_tabs.MEADetailsTabs
-    template_name = 'mec/memanager/detail.html'
-    redirect_url = 'horizon:mec:memanager:index'
+    template_name = 'mec/meamanager/detail.html'
+    redirect_url = 'horizon:mec:meamanager:index'
     page_title = _("MEA Details: {{ mea_id }}")
 
     def get_context_data(self, **kwargs):

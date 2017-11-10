@@ -13,12 +13,10 @@
 # under the License.
 
 
-from django.conf.urls import url
+from openstack_dashboard.test import helpers as test
 
-from apmec_horizon.openstack_dashboard.dashboards.mec.memanager import views
 
-urlpatterns = [
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^deploymea$', views.DeployMEAView.as_view(), name='deploymea'),
-    url(r'^(?P<mea_id>[^/]+)/$', views.DetailView.as_view(), name='detail'),
-]
+class MeamanagerTests(test.TestCase):
+    # Unit tests for meamanager.
+    def test_me(self):
+        self.assertTrue(1 + 1 == 2)
