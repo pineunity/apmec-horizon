@@ -23,7 +23,7 @@ from apmec_horizon.openstack_dashboard.dashboards.mec.meamanager import tables
 
 class MEAManagerTab(tabs.TableTab):
     name = _("MEAManager Tab")
-    slug = "memanager_tab"
+    slug = "meamanager_tab"
     table_classes = (tables.MEAManagerTable,)
     template_name = ("horizon/common/_detail_table.html")
     preload = False
@@ -31,7 +31,7 @@ class MEAManagerTab(tabs.TableTab):
     def has_more_data(self, table):
         return self._has_more
 
-    def get_memanager_data(self):
+    def get_meamanager_data(self):
         try:
             # marker = self.request.GET.get(
             #            tables.MEAManagerTable._meta.pagination_param, None)
@@ -73,7 +73,7 @@ class MEAManagerTab(tabs.TableTab):
 
 
 class MEAManagerTabs(tabs.TabGroup):
-    slug = "memanager_tabs"
+    slug = "meamanager_tabs"
     tabs = (MEAManagerTab,)
     sticky = True
 
