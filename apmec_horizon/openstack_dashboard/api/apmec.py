@@ -112,3 +112,49 @@ def events_list(request, resource_id):
     LOG.debug("events_list() params=%s events=%s l=%s", params, events,
               len(events))
     return events
+
+
+def create_mesd(request, tosca_body=None, **params):
+    LOG.debug("create_mesd(): params=%s", params)
+    mesd_instance = apmecclient(request).create_mesd(body=tosca_body)
+    return mesd_instance
+
+
+def mesd_list(request, **params):
+    LOG.debug("mesd_list(): params=%s", params)
+    mesds = apmecclient(request).list_mesds(**params).get('mesds')
+    return mesds
+
+
+def get_mesd(request, mesd_id):
+    LOG.debug("mesd_get(): mesd_id=%s", str(mesd_id))
+    mesd = apmecclient(request).show_mesd(mesd_id)
+    return mesd
+
+
+def delete_mesd(request, mesd_id):
+    LOG.debug("delete_mesd():mesd_id=%s", str(mesd_id))
+    apmecclient(request).delete_mesd(mesd_id)
+
+
+def get_mes(request, mes_id):
+    LOG.debug("mes_get(): mes_id=%s", str(mes_id))
+    mes_instance = apmecclient(request).show_mes(mes_id)
+    return mes_instance
+
+
+def delete_mes(request, mes_id):
+    LOG.debug("delete_mes():mes_id=%s", str(mes_id))
+    apmecclient(request).delete_ns(mes_id)
+
+
+def mes_list(request, **params):
+    LOG.debug("mes_list(): params=%s", params)
+    mess = apmecclient(request).list_mess(**params).get('mess')
+    return mess
+
+
+def create_mes(request, mes_arg, **params):
+    LOG.debug("create_mes(): mes_arg=%s", str(mes_arg))
+    mes_instance = apmecclient(request).create_mes(body=mes_arg)
+    return mes_instance

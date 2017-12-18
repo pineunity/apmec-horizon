@@ -1,5 +1,3 @@
-# Copyright 2015 Brocade Communications System, Inc.
-#
 # Licensed under the Apache License, Version 2.0 (the "License"); you may
 # not use this file except in compliance with the License. You may obtain
 # a copy of the License at
@@ -16,25 +14,12 @@
 from django.utils.translation import ugettext_lazy as _
 
 import horizon
+from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
 
 
-class Meamgroup(horizon.PanelGroup):
-    slug = "mecgroup"
-    name = _("MEA Management")
-    panels = ('meacatalog', 'meamanager',)
+class Mesmanager(horizon.Panel):
+    name = _("MES Manager")
+    slug = "mesmanager"
 
 
-class Mecogroup(horizon.PanelGroup):
-    slug = "meogroup"
-    name = _("MEC Orchestration")
-    panels = ('vim', 'mescatalog', 'mesmanager')
-
-
-class Mec(horizon.Dashboard):
-    name = _("MEC")
-    slug = "mec"
-    panels = (Meamgroup, Mecogroup,)  # Add your panels here.
-    default_panel = 'meacatalog'  # Specify the slug of the dashboard's
-    # default panel.
-
-horizon.register(Mec)
+dashboard.Mec.register(Mesmanager)
