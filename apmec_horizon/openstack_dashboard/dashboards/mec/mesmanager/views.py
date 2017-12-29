@@ -21,10 +21,10 @@ from horizon import tabs
 from horizon.utils import memoized
 
 from apmec_horizon.openstack_dashboard import api as apmec_api
-from apmec_horizon.openstack_dashboard.dashboards.mec.nsmanager \
+from apmec_horizon.openstack_dashboard.dashboards.mec.mesmanager \
     import forms as project_forms
 
-from apmec_horizon.openstack_dashboard.dashboards.mec.nsmanager \
+from apmec_horizon.openstack_dashboard.dashboards.mec.mesmanager \
     import tabs as mec_tabs
 
 LOG = logging.getLogger(__name__)

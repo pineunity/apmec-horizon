@@ -14,7 +14,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 import horizon
-from appmec_horizon.openstack_dashboard.dashboards.mec import dashboard
+from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
 
 
 class Mescatalog(horizon.Panel):

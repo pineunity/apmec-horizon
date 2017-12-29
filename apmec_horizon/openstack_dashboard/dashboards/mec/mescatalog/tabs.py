@@ -58,7 +58,7 @@ class MESCatalogTab(tabs.TableTab):
 
 
 class MESCatalogTabs(tabs.TabGroup):
-    slug = "nscatalog_tabs"
+    slug = "mescatalog_tabs"
     tabs = (MESCatalogTab,)
     sticky = True
 
@@ -66,10 +66,10 @@ class MESCatalogTabs(tabs.TabGroup):
 class TemplateTab(tabs.Tab):
     name = _("Template")
     slug = "template"
-    template_name = ("mec/nscatalog/template.html")
+    template_name = ("mec/mescatalog/template.html")
 
     def get_context_data(self, request):
-        return {'nsd': self.tab_group.kwargs['nsd']}
+        return {'mesd': self.tab_group.kwargs['mesd']}
 
 
 class MESDEventsTab(tabs.TableTab):
@@ -87,7 +87,7 @@ class MESDEventsTab(tabs.TableTab):
             self._has_more = True
             utils.EventItemList.clear_list()
             events = api.apmec.events_list(self.request,
-                                            self.tab_group.kwargs['nsd_id'])
+                                            self.tab_group.kwargs['mesd_id'])
             for event in events:
                 evt_obj = utils.EventItem(
                     event['id'], event['resource_state'],

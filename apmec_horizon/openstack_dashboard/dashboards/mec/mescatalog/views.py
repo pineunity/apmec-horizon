@@ -23,32 +23,32 @@ from horizon.utils import memoized
 
 from openstack_dashboard import api
 
-from tacker_horizon.openstack_dashboard import api as tacker_api
-from tacker_horizon.openstack_dashboard.dashboards.nfv.nscatalog \
-    import tabs as nfv_tabs
+from apmec_horizon.openstack_dashboard import api as apmec_api
+from apmec_horizon.openstack_dashboard.dashboards.mec.mescatalog \
+    import tabs as mec_tabs
 
-from tacker_horizon.openstack_dashboard.dashboards.nfv.nscatalog \
+from apmec_horizon.openstack_dashboard.dashboards.mec.mescatalog \
     import forms as project_forms
 
 
 class IndexView(tabs.TabbedTableView):
     # A very simple class-based view...
-    tab_group_class = nfv_tabs.NSCatalogTabs
-    template_name = 'nfv/nscatalog/index.html'
+    tab_group_class = mec_tabs.MESCatalogTabs
+    template_name = 'mec/mescatalog/index.html'
 
     def get_data(self, request, context, *args, **kwargs):
         # Add data to the context here...
         return context
 
 
-class OnBoardNSView(forms.ModalFormView):
-    form_class = project_forms.OnBoardNS
-    template_name = 'nfv/nscatalog/onboardmes.html'
-    success_url = reverse_lazy("horizon:nfv:nscatalog:index")
-    modal_id = "onboardns_modal"
-    modal_header = _("OnBoard NS")
-    submit_label = _("OnBoard NS")
-    submit_url = "horizon:nfv:nscatalog:onboardns"
+class OnBoardMESView(forms.ModalFormView):
+    form_class = project_forms.OnBoardMES
+    template_name = 'mec/mescatalog/onboardmes.html'
+    success_url = reverse_lazy("horizon:mec:mescatalog:index")
+    modal_id = "onboardmes_modal"
+    modal_header = _("OnBoard MES")
+    submit_label = _("OnBoard MES")
+    submit_url = "horizon:mec:mescatalog:onboardmes"
 
     @memoized.memoized_method
     def get_object(self):
@@ -64,7 +64,7 @@ class OnBoardNSView(forms.ModalFormView):
         return {}
 
     def get_context_data(self, **kwargs):
-        context = super(OnBoardNSView, self).get_context_data(**kwargs)
+        context = super(OnBoardMESView, self).get_context_data(**kwargs)
         # instance_id = self.kwargs['instance_id']
         # context['instance_id'] = instance_id
         # context['instance'] = self.get_object()
@@ -73,38 +73,38 @@ class OnBoardNSView(forms.ModalFormView):
 
 
 class DetailView(tabs.TabView):
-    tab_group_class = nfv_tabs.NSDDetailTabs
-    template_name = 'nfv/nscatalog/detail.html'
-    redirect_url = 'horizon:nfv:nscatalog:index'
-    page_title = _("NSD Details: {{ nsd_id }}")
+    tab_group_class = mec_tabs.MESDDetailTabs
+    template_name = 'mec/mescatalog/detail.html'
+    redirect_url = 'horizon:mec:mescatalog:index'
+    page_title = _("MESD Details: {{ mesd_id }}")
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
-        nsd = self.get_data()
-        context['nsd'] = nsd
-        context['nsd_id'] = kwargs['nsd_id']
+        mesd = self.get_data()
+        context['mesd'] = mesd
+        context['mesd_id'] = kwargs['mesd_id']
         context['url'] = reverse(self.redirect_url)
         return context
 
     @memoized.memoized_method
     def get_data(self):
-        nsd_id = self.kwargs['nsd_id']
+        mesd_id = self.kwargs['mesd_id']
 
         try:
             template = None
-            nsd = tacker_api.tacker.get_nsd(self.request, nsd_id)
-            attributes_json = nsd['nsd']['attributes']
-            template = attributes_json.get('nsd', None)
-            nsd['template'] = template
+            mesd = apmec_api.apmec.get_mesd(self.request, mesd_id)
+            attributes_json = mesd['mesd']['attributes']
+            template = attributes_json.get('mesd', None)
+            mesd['template'] = template
         except Exception:
             redirect = reverse(self.redirect_url)
             exceptions.handle(self.request,
                               _('Unable to retrieve details for '
-                                'NSD "%s".') % nsd_id,
+                                'MESD "%s".') % mesd_id,
                               redirect=redirect)
             raise exceptions.Http302(redirect)
-        return nsd
+        return mesd
 
     def get_tabs(self, request, *args, **kwargs):
-        nsd = self.get_data()
-        return self.tab_group_class(request, nsd=nsd, **kwargs)
+        mesd = self.get_data()
+        return self.tab_group_class(request, mesd=mesd, **kwargs)

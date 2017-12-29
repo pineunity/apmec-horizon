@@ -14,7 +14,7 @@
 from openstack_dashboard.test import helpers as test
 
 
-class NscatalogTests(test.TestCase):
-    # Unit tests for nscatalog.
+class MescatalogTests(test.TestCase):
+    # Unit tests for mescatalog.
     def test_me(self):
         self.assertTrue(1 + 1 == 2)

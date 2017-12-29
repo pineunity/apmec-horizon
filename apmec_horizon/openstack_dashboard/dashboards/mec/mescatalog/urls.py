@@ -13,10 +13,10 @@
 
 from django.conf.urls import url
 
-from tacker_horizon.openstack_dashboard.dashboards.nfv.nscatalog import views
+from apmec_horizon.openstack_dashboard.dashboards.mec.mescatalog import views
 
 urlpatterns = [
     url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^onboardns', views.OnBoardNSView.as_view(), name='onboardns'),
-    url(r'^(?P<nsd_id>[^/]+)/$', views.DetailView.as_view(), name='detail'),
+    url(r'^onboardmes', views.OnBoardMESView.as_view(), name='onboardmes'),
+    url(r'^(?P<mesd_id>[^/]+)/$', views.DetailView.as_view(), name='detail'),
 ]

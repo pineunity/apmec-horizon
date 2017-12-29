@@ -28,16 +28,16 @@ class DeleteMESD(policy.PolicyTargetMixin, tables.DeleteAction):
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Delete NS",
-            u"Delete NSs",
+            u"Delete MES",
+            u"Delete MESs",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Delete NS",
-            u"Delete NSs",
+            u"Delete MES",
+            u"Delete MESs",
             count
         )
 
