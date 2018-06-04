@@ -39,7 +39,7 @@ class Mesogroup(horizon.PanelGroup):
 class Mec(horizon.Dashboard):
     name = _("MEC")
     slug = "mec"
-    panels = (Memgroup, Meogroup, Mesogroup)  # Add your panels here.
+    panels = (Memgroup, Meogroup, Mesogroup,)  # Add your panels here.
     default_panel = 'meacatalog'  # Specify the slug of the dashboard's
     # default panel.
 
