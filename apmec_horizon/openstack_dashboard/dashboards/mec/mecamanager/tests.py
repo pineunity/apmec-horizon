@@ -11,15 +11,9 @@
 # under the License.
 
 
-from django.utils.translation import ugettext_lazy as _
-
-import horizon
-from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
+from openstack_dashboard.test import helpers as test
 
 
-class Mesmanager(horizon.Panel):
-    name = _("MES Manager")
-    slug = "mecamanager"
-
-
-dashboard.Mec.register(Mesmanager)
+class MecamanagerTests(test.TestCase):
+    def test_me(self):
+        self.assertTrue(1 + 1 == 2)

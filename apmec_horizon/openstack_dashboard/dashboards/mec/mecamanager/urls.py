@@ -11,15 +11,12 @@
 # under the License.
 
 
-from django.utils.translation import ugettext_lazy as _
+from django.conf.urls import url
 
-import horizon
-from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
+from apmec_horizon.openstack_dashboard.dashboards.mec.mecamanager import views
 
-
-class Mesmanager(horizon.Panel):
-    name = _("MES Manager")
-    slug = "mecamanager"
-
-
-dashboard.Mec.register(Mesmanager)
+urlpatterns = [
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^deploymes$', views.DeployMECAView.as_view(), name='deploymes'),
+    url(r'^(?P<mes_id>[^/]+)/$', views.DetailView.as_view(), name='detail'),
+]

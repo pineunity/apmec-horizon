@@ -17,9 +17,9 @@ import horizon
 from apmec_horizon.openstack_dashboard.dashboards.mec import dashboard
 
 
-class Mesmanager(horizon.Panel):
-    name = _("MES Manager")
+class Mecamanager(horizon.Panel):
+    name = _("MECA Manager")
     slug = "mecamanager"
 
 
-dashboard.Mec.register(Mesmanager)
+dashboard.Mec.register(Mecamanager)

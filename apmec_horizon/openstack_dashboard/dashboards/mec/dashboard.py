@@ -18,23 +18,30 @@ from django.utils.translation import ugettext_lazy as _
 import horizon
 
 
-class Meamgroup(horizon.PanelGroup):
-    slug = "mecgroup"
+class Memgroup(horizon.PanelGroup):
+    slug = "memgroup"
     name = _("MEA Management")
     panels = ('meacatalog', 'meamanager',)
 
 
-class Mecogroup(horizon.PanelGroup):
+class Meogroup(horizon.PanelGroup):
     slug = "meogroup"
     name = _("MEC Orchestration")
-    panels = ('vim', 'mescatalog', 'mesmanager')
+    panels = ('vim',)
+
+
+class Mesogroup(horizon.PanelGroup):
+    slug = "mesogroup"
+    name = _("MEC Service Orchestration")
+    panels = ('mescatalog', 'mecamanager',)
 
 
 class Mec(horizon.Dashboard):
     name = _("MEC")
     slug = "mec"
-    panels = (Meamgroup, Mecogroup,)  # Add your panels here.
+    panels = (Memgroup, Meogroup, Mesogroup,)  # Add your panels here.
     default_panel = 'meacatalog'  # Specify the slug of the dashboard's
     # default panel.
+
 
 horizon.register(Mec)
