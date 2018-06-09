@@ -33,7 +33,7 @@ class Meogroup(horizon.PanelGroup):
 class Mesogroup(horizon.PanelGroup):
     slug = "mesogroup"
     name = _("MEC Service Orchestration")
-    panels = ('mescatalog', 'mesmanager',)
+    panels = ('mescatalog', 'mecamanager',)
 
 
 class Mec(horizon.Dashboard):

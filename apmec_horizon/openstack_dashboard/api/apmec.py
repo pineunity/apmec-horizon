@@ -145,7 +145,7 @@ def get_mes(request, mes_id):
 
 def delete_mes(request, mes_id):
     LOG.debug("delete_mes():mes_id=%s", str(mes_id))
-    apmecclient(request).delete_ns(mes_id)
+    apmecclient(request).delete_mes(mes_id)
 
 
 def mes_list(request, **params):
@@ -158,3 +158,49 @@ def create_mes(request, mes_arg, **params):
     LOG.debug("create_mes(): mes_arg=%s", str(mes_arg))
     mes_instance = apmecclient(request).create_mes(body=mes_arg)
     return mes_instance
+
+
+def create_mecad(request, tosca_body=None, **params):
+    LOG.debug("create_mecad(): params=%s", params)
+    mecad_instance = apmecclient(request).create_mecad(body=tosca_body)
+    return mecad_instance
+
+
+def mecad_list(request, **params):
+    LOG.debug("mecad_list(): params=%s", params)
+    mecads = apmecclient(request).list_mecads(**params).get('mecads')
+    return mecads
+
+
+def get_mecad(request, mecad_id):
+    LOG.debug("mecad_get(): mecad_id=%s", str(mecad_id))
+    mecad = apmecclient(request).show_mecad(mecad_id)
+    return mecad
+
+
+def delete_mecad(request, mecad_id):
+    LOG.debug("delete_mecad():mecad_id=%s", str(mecad_id))
+    apmecclient(request).delete_mecad(mecad_id)
+
+
+def get_meca(request, meca_id):
+    LOG.debug("meca_get(): meca_id=%s", str(meca_id))
+    meca_instance = apmecclient(request).show_meca(meca_id)
+    return meca_instance
+
+
+def delete_meca(request, meca_id):
+    LOG.debug("delete_meca():meca_id=%s", str(meca_id))
+    apmecclient(request).delete_meca(meca_id)
+
+
+def meca_list(request, **params):
+    LOG.debug("meca_list(): params=%s", params)
+    mecas = apmecclient(request).list_mecas(**params).get('mecas')
+    return mecas
+
+
+def create_meca(request, meca_arg, **params):
+    LOG.debug("create_meca(): meca_arg=%s", str(meca_arg))
+    meca_instance = apmecclient(request).create_meca(body=meca_arg)
+    return meca_instance
