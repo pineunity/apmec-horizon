@@ -16,7 +16,7 @@ from oslo_log import log as logging
 
 from horizon import exceptions
 from horizon import forms
-from horizon import mecasages
+from horizon import messages
 
 from apmec_horizon.openstack_dashboard import api
 
@@ -166,7 +166,7 @@ class DeployMECA(forms.SelfHandlingForm):
                 meca_attr['config'] = config_val
 
             api.apmec.create_meca(request, meca_arg)
-            mecasages.success(request,
+            messages.success(request,
                              _('MECA %s create operation initiated.') %
                              meca_name)
             return True
